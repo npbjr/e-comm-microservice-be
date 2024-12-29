@@ -1,0 +1,23 @@
+syntax = "proto3"
+
+package ecomm.products;
+
+import "stock/stock.proto"
+
+service ProductService {
+    rpc GetProduct (GetProductRequest) returns (ProductsDTO);
+}
+
+message ProductsDTO {
+    int32 id = 1;
+    string sku = 2;
+    float price = 3;
+    ecomm.stock.StockDTO stocks = 4;
+
+}
+
+message GetProductRequest {
+    string sku = 1;
+    string catalog = 2;
+    string version = 3;
+}

@@ -1,0 +1,16 @@
+package ecomm.stock;
+
+
+service StockService {
+    rpc getStockBySku(GetStockRequest) returns (StockDTO);
+}
+
+message GetStockRequest {
+    string sku = 1;
+}
+
+message StockDTO {
+    string code = 1;
+    string stockLevel = 2;
+    string stockStatus = 3;
+}

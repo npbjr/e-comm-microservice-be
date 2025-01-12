@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param } from '@nestjs/common';
 
 import { AuthClientService } from './auth-client.service';
 import { OAuthClient } from './auth-client.schema';
@@ -10,5 +10,9 @@ export class AuthClientController {
     @Post()
     async create(@Body()createOauthClientDto: any): Promise<OAuthClient> {
         return this.oauthService.create(createOauthClientDto);
+    }
+    @Get(':id')
+    async getSecret(@Param('id') id:string): Promise<OAuthClient>{
+        return this.oauthService.findById(id);
     }
 }
